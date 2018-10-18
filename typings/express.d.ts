@@ -8,4 +8,8 @@ declare namespace Express {
   export interface Response {
     jSend: jSend;
   }
+
+  export interface Request {
+    token: string;
+  }
 }
