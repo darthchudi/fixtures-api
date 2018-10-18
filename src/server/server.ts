@@ -5,6 +5,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import jSend from './middlewares/jSend';
+import { LowercaseQueryStrings } from './middlewares/lowercaseQuery';
+import { AuthMiddleware } from './middlewares/auth';
 
 import ENV from '../common/config/env';
 
@@ -18,11 +20,20 @@ export default class Server {
       rootPath: '/api',
     });
     this.server.setConfig(app => {
+      app.disable('x-powered-by');
+
       app.use(express.json());
       app.use(express.urlencoded({ extended: false }));
 
       //Use jSend middleware
       app.use(jSend);
+
+      //use lowercase query middleware
+      app.use(LowercaseQueryStrings);
+
+      //Add auth middleware to relevant endpoints
+      app.use('/api/team', AuthMiddleware);
+      app.use('api/fixture', AuthMiddleware);
     });
   }
 
