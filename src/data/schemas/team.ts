@@ -15,7 +15,14 @@ const TeamSchema = new Schema(
     },
     deleted_at: { type: SchemaTypes.Date },
     league: { ...trimmedLowercaseString, required: true },
-    name: { ...trimmedLowercaseString, required: true },
+    name: { ...trimmedLowercaseString, required: true, unique: true },
+    short_name: {
+      ...trimmedLowercaseString,
+      default: function() {
+        return this.name;
+      },
+      unique: true,
+    },
     stadium: { ...trimmedLowercaseString, required: true },
   },
   {
