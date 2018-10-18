@@ -5,11 +5,12 @@ import generateUUID from 'uuid/v4';
  * Removes _id field in subdocuments and allows virtual fields to be returned
  */
 export const readMapper = {
-  toObject: {
+  toJSON: {
     virtuals: true,
     transform: (doc, ret, options) => {
       delete ret._id;
       if (ret.__v !== undefined) delete ret.__v;
+      if (ret.password !== undefined) delete ret.password;
       return ret;
     },
   },
