@@ -6,9 +6,8 @@ export interface IArea {
 }
 
 export interface ITeam extends Timestamps {
-  id: string;
+  area: IArea;
+  league: string;
   name: string;
   stadium: string;
-  league: string;
-  area: IArea;
 }

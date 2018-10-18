@@ -3,15 +3,14 @@ import { IScore } from './score';
 import { ITeam } from './team';
 
 export interface IFixture extends Timestamps {
-  id: string;
-  home_team: string | ITeam;
   away_team: string | ITeam;
+  competition: string;
   date: Date;
-  time: string;
+  home_team: string | ITeam;
+  group: string;
   match_day: number;
   stadium: string;
-  competition: string;
   stage: string;
-  group: string;
   score: IScore;
+  time: string;
 }
