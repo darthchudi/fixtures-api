@@ -27,6 +27,7 @@ export default class Server {
   }
 
   connectDB() {
+    mongoose.set('useCreateIndex', true);
     mongoose.connect(
       ENV.MONGODB_URL,
       { useNewUrlParser: true }
