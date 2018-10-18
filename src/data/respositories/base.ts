@@ -20,13 +20,15 @@ export default class BaseRepository<TModel extends Document>
   create(attributes: any): Promise<TModel> {
     return new Promise<TModel>((resolve, reject) => {
       this.model.create(attributes, (err, result) => {
-        if (err)
-          return reject(
-            new RepositoryErrors.GenericDBError(
-              'Could not create new ' + this.entityName
-            )
-          );
-        return resolve(result);
+        if (!err) return resolve(result);
+
+        if (err.code !== 11000) return reject(err);
+
+        reject(
+          new RepositoryErrors.DuplicateModelError(
+            `${this.entityName} already exists`
+          )
+        );
       });
     });
   }
@@ -42,7 +44,7 @@ export default class BaseRepository<TModel extends Document>
         if (!result)
           return reject(
             new RepositoryErrors.ModelNotFoundError(
-              'Could not find ' + this.entityName
+              this.entityName + ' not found'
             )
           );
         resolve(result);
@@ -64,7 +66,7 @@ export default class BaseRepository<TModel extends Document>
           if (!result)
             return reject(
               new RepositoryErrors.ModelNotFoundError(
-                'Could not find ' + this.entityName
+                this.entityName + ' not found'
               )
             );
           resolve(result);
@@ -103,7 +105,7 @@ export default class BaseRepository<TModel extends Document>
         if (!result)
           return reject(
             new RepositoryErrors.ModelNotFoundError(
-              'Could not find ' + this.entityName
+              this.entityName + ' not found'
             )
           );
         result.set(data);
@@ -127,7 +129,7 @@ export default class BaseRepository<TModel extends Document>
         if (!result)
           return reject(
             new RepositoryErrors.ModelNotFoundError(
-              'Could not find ' + this.entityName
+              this.entityName + ' not found'
             )
           );
 
