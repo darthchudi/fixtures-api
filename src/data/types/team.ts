@@ -9,5 +9,6 @@ export interface ITeam extends Timestamps {
   area: IArea;
   league: string;
   name: string;
+  short_name: string;
   stadium: string;
 }
