@@ -13,13 +13,13 @@ import { inject } from 'inversify';
 
 import { Request, Response } from 'express';
 
-import BaseController from './base';
-import FixtureRepository from '../../data/respositories/fixture';
-import TeamRepository from '../../data/respositories/team';
-import CONSTANTS from '../../common/constants/identifiers';
+import BaseController from '.././base';
+import FixtureRepository from '../../../data/respositories/fixture';
+import TeamRepository from '../../../data/respositories/team';
+import CONSTANTS from '../../../common/constants/identifiers';
 
-import validator from '../validators/fixture';
-import parseQuery from '../helpers/parseQuery';
+import validator from '../../validators/fixture';
+import parseQuery from '../../helpers/parseQuery';
 
 @controller('/fixture')
 export default class FixtureController extends BaseController {
