@@ -6,7 +6,7 @@ class FixtureValidator extends BaseValidator<IFixture> {
     const schema = this.joi.object({
       away_team: this.joi.string().required(),
       competition: this.joi.string().required(),
-      date: this.joi.date(),
+      date: this.joi.date().required(),
       group: this.joi.string(),
       home_team: this.joi.string().required(),
       match_day: this.joi.number(),
@@ -15,8 +15,8 @@ class FixtureValidator extends BaseValidator<IFixture> {
       status: this.joi.string().valid(['pending', 'ongoing', 'completed']),
       score: this.joi.object({
         winner: this.joi.string(),
-        home_team: this.joi.number(),
-        away_team: this.joi.number(),
+        home_team: this.joi.number().required(),
+        away_team: this.joi.number().required(),
       }),
       time: this.joi.string().required(),
     });
