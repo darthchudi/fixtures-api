@@ -1,0 +1,47 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/fixtures-api
+    docker:
+      - image: circleci/node:carbon
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json"  }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Build Typescript
+          command: yarn build:tsc
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - ./dist
+            - ./node_modules
+  test:
+    working_directory: ~/asset-service
+    docker:
+      - image: circleci/node:carbon
+      - image: circleci/mongo:3.4
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Run tests
+          command: yarn test
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
