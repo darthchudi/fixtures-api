@@ -8,9 +8,9 @@ import { UserRequest, TeamRequest } from '../../mocks';
 const server = new Server();
 const app = server.getServer().build();
 
-afterAll(() => {
-  return server.dbConnection.close();
-});
+// afterAll(() => {
+//   return server.dbConnection.close();
+// });
 
 describe('Team Endpoints', () => {
   const baseUrl = '/api/team';

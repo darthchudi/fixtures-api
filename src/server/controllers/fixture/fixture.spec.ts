@@ -13,9 +13,9 @@ beforeEach(() => {
   cleanUpMetadata();
 });
 
-afterAll(() => {
-  return server.dbConnection.close();
-});
+// afterAll(() => {
+//   return server.dbConnection.close();
+// });
 
 describe('Fixture Endpoints', () => {
   const baseUrl = '/api/fixture';
