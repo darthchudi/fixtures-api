@@ -1,12 +1,8 @@
 import { Timestamps } from './';
 
-export interface IArea {
+export interface ITeam extends Timestamps {
   city: string;
   country: string;
-}
-
-export interface ITeam extends Timestamps {
-  area: IArea;
   league: string;
   name: string;
   short_name: string;

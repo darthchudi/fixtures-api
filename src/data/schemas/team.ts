@@ -9,10 +9,8 @@ import {
 const TeamSchema = new Schema(
   {
     _id: uuid,
-    area: {
-      city: { ...trimmedLowercaseString, default: null },
-      country: { ...trimmedLowercaseString, default: null },
-    },
+    city: { ...trimmedLowercaseString, default: null },
+    country: { ...trimmedLowercaseString, default: null },
     deleted_at: { type: SchemaTypes.Date },
     league: { ...trimmedLowercaseString, required: true },
     name: { ...trimmedLowercaseString, required: true, unique: true },

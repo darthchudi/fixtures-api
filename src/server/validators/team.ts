@@ -4,10 +4,8 @@ import { ITeam } from '../../data/types/team';
 class TeamValidator extends BaseValidator<ITeam> {
   create(body: any) {
     const schema = this.joi.object({
-      area: this.joi.object({
-        city: this.joi.string(),
-        country: this.joi.string(),
-      }),
+      city: this.joi.string(),
+      country: this.joi.string(),
       league: this.joi.string().required(),
       name: this.joi.string().required(),
       short_name: this.joi.string(),
