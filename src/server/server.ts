@@ -33,7 +33,7 @@ export default class Server {
 
       //Add auth middleware to relevant endpoints
       app.use('/api/team', AuthMiddleware);
-      app.use('api/fixture', AuthMiddleware);
+      app.use('/api/fixture', AuthMiddleware);
     });
   }
 
