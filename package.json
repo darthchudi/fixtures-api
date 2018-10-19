@@ -4,7 +4,7 @@
   "description": "RESTful API for managing teams and fixtures",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start ./dist/server -i max",
+    "start": "node ./dist/server",
     "start:dev": "nodemon ./dist/server",
     "watch:tsc": "tsc --watch -p ./tsconfig.json",
     "build:tsc": "tsc -p ./tsconfig.json",
