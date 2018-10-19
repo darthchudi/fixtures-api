@@ -3,7 +3,6 @@ namespace RepositoryErrors {
     code: string;
     constructor(message: string) {
       super(message);
-      this.code = 'NonRetryableError';
     }
   }
 
@@ -11,7 +10,6 @@ namespace RepositoryErrors {
     code: string;
     constructor(message: string) {
       super(message);
-      this.code = 'NonRetryableError';
     }
   }
 
@@ -19,7 +17,6 @@ namespace RepositoryErrors {
     code: string;
     constructor(message: string) {
       super(message);
-      this.code = 'NonRetryableError';
     }
   }
 }
