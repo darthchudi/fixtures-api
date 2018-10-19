@@ -12,22 +12,17 @@ export default class UserRepository extends BaseRepository<IUserModel> {
     super('Users', UserSchema, 'user');
   }
 
-  create(atttributes: any): Promise<IUserModel> {
+  create(attributes: any): Promise<IUserModel> {
     return new Promise<IUserModel>((resolve, reject) => {
-      super.create(atttributes).then(
-        result => {
-          resolve(result);
-        },
-        err => {
-          if (err.code !== 11000) return reject(err);
-
-          return reject(
-            new RepositoryErrors.DuplicateModelError(
-              'Username or email already exists'
-            )
-          );
-        }
-      );
+      this.model.create(attributes, (err, result) => {
+        if (!err) return resolve(result);
+        if (err.code !== 11000) return reject(err);
+        return reject(
+          new RepositoryErrors.DuplicateModelError(
+            'Username or email already exists'
+          )
+        );
+      });
     });
   }
 }
