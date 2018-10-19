@@ -18,7 +18,7 @@ const FixtureSchema = new Schema(
     _id: uuid,
     away_team: {
       type: SchemaTypes.String,
-      ref: 'Fixtures',
+      ref: 'Teams',
       required: true,
     },
     competition: { ...trimmedLowercaseString, default: null },
@@ -27,13 +27,18 @@ const FixtureSchema = new Schema(
     group: { ...trimmedLowercaseString, default: null },
     home_team: {
       type: SchemaTypes.String,
-      ref: 'Fixtures',
+      ref: 'Teams',
       required: true,
     },
     match_day: { type: SchemaTypes.Number, default: null },
     stadium: { ...trimmedLowercaseString, required: true },
     stage: { ...trimmedLowercaseString, default: null },
-    score: ScoreSchema,
+    status: {
+      ...trimmedLowercaseString,
+      enum: ['pending', 'ongoing', 'completed'],
+      default: 'pending',
+    },
+    score: { type: ScoreSchema, default: null },
     time: { ...trimmedString, required: true },
   },
   {
