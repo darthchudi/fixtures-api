@@ -12,9 +12,6 @@ export const AuthMiddleware = async (
   res: Response,
   next: NextFunction
 ) => {
-  //Skip authentication if request is a HTTP Get method
-  if (req.method === 'GET') return next();
-
   const authHeader = req.headers.authorization;
   if (!authHeader) {
     return res
@@ -26,8 +23,12 @@ export const AuthMiddleware = async (
 
   try {
     const validatedToken = await decodeToken(token);
-    if (validatedToken.role !== 'admin') throw new Error('Unauthorized user');
     req.token = token;
+
+    //End authentication if request is a HTTP Get method
+    if (req.method === 'GET') return next();
+
+    if (validatedToken.role !== 'admin') throw new Error('Unauthorized user');
     next();
   } catch (e) {
     res.status(HTTPStatus.UNAUTHORIZED_ERROR).jSend.error(e.message);
