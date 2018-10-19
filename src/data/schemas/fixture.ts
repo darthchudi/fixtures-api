@@ -21,10 +21,8 @@ const FixtureSchema = new Schema(
       ref: 'Teams',
       required: true,
     },
-    competition: { ...trimmedLowercaseString, default: null },
     date: { type: SchemaTypes.Date, required: true },
     deleted_at: { type: SchemaTypes.Date },
-    group: { ...trimmedLowercaseString, default: null },
     home_team: {
       type: SchemaTypes.String,
       ref: 'Teams',
@@ -32,7 +30,6 @@ const FixtureSchema = new Schema(
     },
     match_day: { type: SchemaTypes.Number, default: null },
     stadium: { ...trimmedLowercaseString, required: true },
-    stage: { ...trimmedLowercaseString, default: null },
     status: {
       ...trimmedLowercaseString,
       enum: ['pending', 'ongoing', 'completed'],

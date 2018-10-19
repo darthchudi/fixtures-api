@@ -22,7 +22,6 @@ const UserSchema = new Schema(
     last_name: { ...trimmedLowercaseString, required: true },
     role: { type: SchemaTypes.String, default: 'user' },
     username: { ...trimmedLowercaseString, required: true, unique: true },
-    phone_number: { ...trimmedLowercaseString, required: true },
     password: { ...trimmedString, required: true },
   },
   {

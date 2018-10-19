@@ -10,13 +10,10 @@ enum IMatchStatus {
 
 export interface IFixture extends Timestamps {
   away_team: string | ITeam;
-  competition: string;
   date: Date;
   home_team: string | ITeam;
-  group: string;
   match_day: number;
   stadium: string;
-  stage: string;
   status: IMatchStatus;
   score: IScore;
   time: string;

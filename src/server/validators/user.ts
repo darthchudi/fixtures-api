@@ -22,10 +22,6 @@ class UserValidator extends BaseValidator<IUser> {
         .string()
         .required()
         .min(5),
-      phone_number: this.joi
-        .string()
-        .required()
-        .length(11),
     });
 
     return this.validate(body, schema, null);

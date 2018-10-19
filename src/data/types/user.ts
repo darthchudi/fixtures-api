@@ -5,7 +5,6 @@ export interface IUser extends Timestamps {
   first_name: string;
   role: string;
   last_name: string;
-  phone_number: string;
   password: string;
   username: string;
 }

@@ -5,8 +5,6 @@ class TeamValidator extends BaseValidator<ITeam> {
   create(body: any) {
     const schema = this.joi.object({
       city: this.joi.string(),
-      country: this.joi.string(),
-      league: this.joi.string().required(),
       name: this.joi.string().required(),
       short_name: this.joi.string(),
       stadium: this.joi.string().required(),
@@ -17,11 +15,7 @@ class TeamValidator extends BaseValidator<ITeam> {
 
   update(body: any) {
     const schema = this.joi.object({
-      area: this.joi.object({
-        city: this.joi.string(),
-        country: this.joi.string(),
-      }),
-      league: this.joi.string(),
+      city: this.joi.string(),
       name: this.joi.string(),
       short_name: this.joi.string(),
       stadium: this.joi.string(),
