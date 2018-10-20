@@ -4,7 +4,7 @@ RESTful API endpoints for managing Fixtures in Mock Premier League
 
 [![CircleCI](https://circleci.com/gh/darthchudi/fixtures-api.svg?style=svg)](https://circleci.com/gh/darthchudi/fixtures-api)
 
-[API Link](https://fixtures-api.herokuapp.com/api))
+[API Link](https://fixtures-api.herokuapp.com/api)
 
 ## Note
 
