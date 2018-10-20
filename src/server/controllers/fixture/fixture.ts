@@ -13,8 +13,8 @@ import { inject } from 'inversify';
 
 import { Request, Response } from 'express';
 
-import BaseController from '.././base';
-import FixtureRepository from '../../../data/respositories/fixture';
+import BaseController from '../base';
+import FixtureRepository from '../../../data/respositories/fixture/fixture';
 import TeamRepository from '../../../data/respositories/team';
 import CONSTANTS from '../../../common/constants/identifiers';
 
