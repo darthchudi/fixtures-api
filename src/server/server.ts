@@ -21,6 +21,8 @@ export default class Server {
     this.server = new InversifyExpressServer(container, null, {
       rootPath: '/api',
     });
+
+    //Define app level middleware
     this.server.setConfig(app => {
       app.disable('x-powered-by');
 
@@ -36,6 +38,13 @@ export default class Server {
       //Add auth middleware to relevant endpoints
       app.use('/api/team', AuthMiddleware);
       app.use('/api/fixture', AuthMiddleware);
+    });
+
+    //Server level midddleware for catching inexistent routes
+    this.server.setErrorConfig(app => {
+      app.use((req, res, next) => {
+        res.status(400).json({ message: 'API Endpoint does not exist' });
+      });
     });
   }
 
