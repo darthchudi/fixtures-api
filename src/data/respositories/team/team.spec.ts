@@ -15,7 +15,10 @@ import { ITeamModel } from '../../models/team';
 let request, teamRepository: TeamRepository, team: ITeamModel;
 
 beforeAll(async () => {
-  mongoose.connect(ENV.MONGODB_URL);
+  mongoose.connect(
+    ENV.MONGODB_URL,
+    { useNewUrlParser: true }
+  );
 
   teamRepository = new TeamRepository();
 

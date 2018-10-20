@@ -20,7 +20,10 @@ let request,
   awayTeam: ITeamModel;
 
 beforeAll(async () => {
-  mongoose.connect(ENV.MONGODB_URL);
+  mongoose.connect(
+    ENV.MONGODB_URL,
+    { useNewUrlParser: true }
+  );
 
   fixtureRepository = new FixtureRespository();
 

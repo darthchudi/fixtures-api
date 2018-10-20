@@ -15,7 +15,10 @@ import { IUserModel } from '../../models/user';
 let request, userRepository: UserRepository, user: IUserModel;
 
 beforeAll(async () => {
-  mongoose.connect(ENV.MONGODB_URL);
+  mongoose.connect(
+    ENV.MONGODB_URL,
+    { useNewUrlParser: true }
+  );
 
   userRepository = new UserRepository();
 
