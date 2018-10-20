@@ -1,10 +1,10 @@
-import BaseRepository from './base';
+import BaseRepository from '../base';
 import { injectable } from 'inversify';
 
-import { IFixtureModel } from '../models/fixture';
-import FixtureSchema from '../schemas/fixture';
+import { IFixtureModel } from '../../models/fixture';
+import FixtureSchema from '../../schemas/fixture';
 
-import { QueryOptions } from '../contracts/repository';
+import { QueryOptions } from '../../contracts/repository';
 
 @injectable()
 export default class FixtureRepository extends BaseRepository<IFixtureModel> {
