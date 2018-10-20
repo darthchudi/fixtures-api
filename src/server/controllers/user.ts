@@ -10,15 +10,15 @@ import {
   httpGet,
 } from 'inversify-express-utils';
 
-import CONSTANTS from '../../../common/constants/identifiers';
+import CONSTANTS from '../../common/constants/identifiers';
 
-import validator from '../../validators/user';
+import validator from '../validators/user';
 
-import UserRepository from '../../../data/respositories/user';
+import UserRepository from '../../data/respositories/user/user';
 
-import BaseController from '../base';
+import BaseController from './base';
 
-import { signToken, decodeToken } from '../../helpers/auth';
+import { signToken, decodeToken } from '../helpers/auth';
 
 @controller('/user')
 export class UserController extends BaseController {

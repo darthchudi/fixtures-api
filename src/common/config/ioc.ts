@@ -3,9 +3,9 @@ import { Container } from 'inversify';
 
 import CONSTANTS from '../constants/identifiers';
 
-import UserRepository from '../../data/respositories/user';
+import UserRepository from '../../data/respositories/user/user';
 import FixtureRepository from '../../data/respositories/fixture/fixture';
-import TeamRepository from '../../data/respositories/team';
+import TeamRepository from '../../data/respositories/team/team';
 
 import '../../server/controllers';
 

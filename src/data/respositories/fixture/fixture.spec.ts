@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import ENV from '../../../common/config/env';
 
 import FixtureRespository from './fixture';
-import TeamRepository from '../team';
+import TeamRepository from '../team/team';
 
 import { FixtureRequest, TeamRequest } from '../../../server/mocks';
 
@@ -49,6 +49,13 @@ describe('Fixture Operations', () => {
     expect((fixture.home_team as ITeamModel).id).toBe(request.home_team);
     expect((fixture.away_team as ITeamModel).id).toBe(request.away_team);
     expect(fixture.date).toBeDefined();
+  });
+
+  it('finds a fixture by ID', async () => {
+    expect.assertions(2);
+    const res = await fixtureRepository.byID(fixture.id);
+    expect(res.stadium).toBe(fixture.stadium);
+    expect(res.id).toBe(fixture.id);
   });
 
   it('finds all fixtures', async () => {

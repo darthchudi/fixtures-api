@@ -1,10 +1,10 @@
-import BaseRepository from './base';
+import BaseRepository from '../base';
 import { injectable } from 'inversify';
 
-import { IUserModel } from '../models/user';
-import UserSchema from '../schemas/user';
+import { IUserModel } from '../../models/user';
+import UserSchema from '../../schemas/user';
 
-import RepositoryErrors from '../errors/repository';
+import RepositoryErrors from '../../errors/repository';
 
 @injectable()
 export default class UserRepository extends BaseRepository<IUserModel> {
