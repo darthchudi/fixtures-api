@@ -6,7 +6,7 @@ import ENV from '../../common/config/env';
  * @param payload - The payload to be encoded
  */
 export const signToken = payload => {
-  const token = jwt.sign(payload, ENV.JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign(payload, ENV.JWT_SECRET, { expiresIn: '96h' });
   return { token };
 };
 
