@@ -1,5 +1,4 @@
 import Server from '../../server';
-import { cleanUpMetadata } from 'inversify-express-utils';
 import request from 'supertest';
 import 'jest';
 
@@ -8,10 +7,6 @@ import { UserRequest } from '../../mocks';
 
 const server = new Server();
 const app = server.getServer().build();
-
-beforeEach(() => {
-  cleanUpMetadata();
-});
 
 afterAll(async () => {
   //Close Database
