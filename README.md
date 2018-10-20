@@ -4,10 +4,15 @@ RESTful API endpoints for managing Fixtures in Mock Premier League
 
 [![CircleCI](https://circleci.com/gh/darthchudi/fixtures-api.svg?style=svg)](https://circleci.com/gh/darthchudi/fixtures-api)
 
+[API Link](https://fixtures-api.herokuapp.com/api))
+
+## Note
+
+All relevant API endpoints are prefixed with `/api`
+
 ## Documentation
 
-The postman collection can be found here:
-The accompanying documentation for the postman collection can be found here:
+The documentation was built with Postman and be found here: [Documentation](https://documenter.getpostman.com/view/3903733/RWguwwKy)
 
 ## How to run locally
 
@@ -24,8 +29,8 @@ Tests for the User, Team and Fixture entities can be found in the `src/data/repo
 
 ## Stack
 
-- Node.js + Typescript - Backend
-- MongoDB - Database
+- Backend - Node.js + Typescript
+- Database - MongoDB
 - Testing - Jest
 - Continuous Integration - CircleCI
 - Cloud Provider - Heroku
