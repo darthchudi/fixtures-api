@@ -15,15 +15,21 @@ import { Request, Response } from 'express';
 
 import BaseController from '../base';
 import TeamRepository from '../../../data/respositories/team';
+import FixturesRepository from '../../../data/respositories/team';
 import CONSTANTS from '../../../common/constants/identifiers';
 import validator from '../../validators/team';
 
 @controller('/team')
 export default class TeamController extends BaseController {
   _team: TeamRepository;
-  constructor(@inject(CONSTANTS.TEAM_REPOSITORY) _team: TeamRepository) {
+  _fixtures: FixturesRepository;
+  constructor(
+    @inject(CONSTANTS.TEAM_REPOSITORY) _team: TeamRepository,
+    @inject(CONSTANTS.FIXTURE_REPOSITORY) _fixtures: FixturesRepository
+  ) {
     super();
     this._team = _team;
+    this._fixtures = _fixtures;
   }
 
   @httpPost('/')
@@ -40,6 +46,26 @@ export default class TeamController extends BaseController {
       this.handleSuccess(team, req, res);
     } catch (e) {
       return this.handleError(e, req, res);
+    }
+  }
+
+  @httpGet('/:id/fixtures')
+  async getFixtures(
+    @request() req: Request,
+    @response() res: Response,
+    @requestParam('id') id: string
+  ) {
+    const conditions = { ...req.query };
+    try {
+      const fixtures = await this._fixtures.all({
+        conditions: {
+          ...conditions,
+          $or: [{ home_team: id }, { away_team: id }],
+        },
+      });
+      this.handleSuccess(fixtures, req, res);
+    } catch (e) {
+      this.handleError(e, req, res);
     }
   }
 
