@@ -25,7 +25,7 @@ The documentation was built with Postman and be found here: [Documentation](http
 
 ## Tests
 
-Tests for the User, Team and Fixture entities can be found in the `src/data/repositories/fixture` directory, where they are implemented on the data access layer.
+There are 4 test suites and 23 tests in total. Tests for the User, Team and Fixture entities can be found in the `src/data/repositories/fixture` directory, where they are implemented on the data access layer.
 
 ## Stack
 
