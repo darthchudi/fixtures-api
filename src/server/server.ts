@@ -12,9 +12,11 @@ import ENV from '../common/config/env';
 
 export default class Server {
   private server: InversifyExpressServer;
+  public mongoose;
   public dbConnection: mongoose.Connection;
 
   constructor() {
+    this.mongoose = mongoose;
     this.dbConnection = this.connectDB();
     this.server = new InversifyExpressServer(container, null, {
       rootPath: '/api',

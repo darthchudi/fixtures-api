@@ -13,9 +13,13 @@ beforeEach(() => {
   cleanUpMetadata();
 });
 
-// afterAll(() => {
-//   return server.dbConnection.close();
-// });
+afterAll(async () => {
+  //Close Database
+  await server.dbConnection.close();
+
+  //Close MongoDB connection
+  await server.mongoose.disconnect();
+});
 
 describe('Fixture Endpoints', () => {
   const baseUrl = '/api/fixture';
